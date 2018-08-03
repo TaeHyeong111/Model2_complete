@@ -11,19 +11,32 @@ public class PstmtQuery extends QueryTemplate {
 
 	@Override
 	void initialize() {
-		map.put("sql",
-				String.format("select" + ColumnFinder.find(Domain.MEMBER) + " FROM %s " + " WHERE %s " + " LIKE ? ",
-						map.get("table"), map.get("column")));
+		System.out.println(map.get("ddddd"+"table"));
+		System.out.println(map.get("qqqqqq"+"column"));
+		map.put("sql", String.format(
+				" SELECT "
+				+ ColumnFinder.find(Domain.MEMBER)
+				+ " FROM %s "
+				+ " WHERE %s "
+				+ " LIKE ? ",
+				map.get("table"),
+				map.get("column"))); 
 	}
-
 	@Override
 	void startPlay() {
+		System.out.println("======================1");
+		System.out.println(map.get("sql"));
+		//System.out.println("나아는 베엘류"+map.get("value"));
+		//System.out.println("나는맵맵"+map);
 		try {
-			pstmt = DatabaseFactory.createDatabase2(map).getConnection().prepareStatement((String) map.get("sql"));
-			pstmt.setString(1, // setString은 1부터 시작함
-					"%" + map.get("value").toString() + "%");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			pstmt = DatabaseFactory
+						.createDatabase2(map)
+						.getConnection()
+						.prepareStatement(
+								(String)map.get("sql"));
+			pstmt.setString(1,
+					"%"+map.get("value").toString()+"%");
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -31,12 +44,13 @@ public class PstmtQuery extends QueryTemplate {
 	@Override
 	void endPlay() {
 		try {
+			System.out.println("--ENDPLAY");
 			ResultSet rs = pstmt.executeQuery();
 			MemberBean member = null;
 			while (rs.next()) {
 				member = new MemberBean();
-				member.setUserId(rs.getString("MEM_ID"));
-				member.setTeamId(rs.getString("TEAM_ID"));
+				member.setUserId(rs.getString("USERID"));
+				member.setTeamId(rs.getString("TEAMID"));
 				member.setName(rs.getString("NAME"));
 				member.setAge(rs.getString("AGE"));
 				member.setRoll(rs.getString("ROLL"));

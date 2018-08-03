@@ -10,7 +10,7 @@
 	<select name="roll" id="searchOption">
 		  <option value="userid">아이디</option>
 		  <option value="name">이름</option>
-		  <option value="teamname">팀명</option>
+		  <option value="teamid">팀명</option>
 		  </select>
 	</form>
 	</div>
