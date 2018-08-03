@@ -139,7 +139,7 @@ var admin = (()=>{ /* 디폴트생성자부분()) */
 						'width80pt center');
 				service.addClass(
 						document.getElementById('searchWord'),
-						'width100px floatRight');
+						'width100pt floatRight');
 				service.addClass(
 						document.getElementById('searchOption'),
 						'floatRight ');	
@@ -197,5 +197,6 @@ var router = (()=> {
 })();
 /* 제이슨은 속성도 들어올수있고 기능도 들어올수있어 OBJECT임 */ 
 /* 펑션만 있으면 개체 */
+/*주석*/
 
 
