@@ -1,14 +1,18 @@
 package dao;
 
-import java.sql.*;
+import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import domain.MemberBean;
+import enums.Domain;
 import enums.MemberQuery;
 import enums.Vendor;
-import factory.*;
+import factory.DatabaseFactory;
 import pool.DBConstant;
+import template.PstmtQuery;
+import template.QueryTemplate;
 
 public class MemberDAOImpl implements MemberDAO {
 	private static MemberDAO instance = new MemberDAOImpl();
@@ -68,9 +72,20 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	@Override
 	public List<MemberBean> selectMemberBySearchWord(String word) {
-		List<MemberBean> lst = new ArrayList<>();
-		System.out.println("999"+word.split("/")[0]);
-		System.out.println("999"+word.split("/")[1]);
+		System.out.println(word);
+		QueryTemplate q = new PstmtQuery();
+		List<MemberBean> list = new ArrayList<>();
+		HashMap<String,Object> map = new HashMap<>();
+		map.put("column", word.split("/")[0]);
+		map.put("value", word.split("/")[1]);
+		map.put("table", Domain.MEMBER);
+		q.play(map);
+		for(Object s: q.getList()) {
+			list.add((MemberBean)s);
+		}
+		return list;
+		
+		/*List<MemberBean> lst = new ArrayList<>();
 		try {
 			ResultSet rs = DatabaseFactory.createDatabase(
 					Vendor.ORACLE, DBConstant.USERNAME,DBConstant.PASSWORD)
@@ -97,7 +112,7 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		System.out.println("리이스트"+lst);
 		return lst;
-		
+		*/
 	}
 	@Override
 	public int countMember() {

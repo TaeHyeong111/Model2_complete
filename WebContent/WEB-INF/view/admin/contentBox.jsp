@@ -33,6 +33,14 @@
 			<td>${user.teamId}</td>
 		</tr><!-- admin.do로 넘기고 멤버서비스임플점해서 끌어옴 / 이름을 눌럿더니 아이디가 나옴-->
 		</c:forEach>
+		<tr>
+		<td colspan="6">
+			전체회원수 : '${count}' 
+			<c:forEach begin="1" end="${count %5 == 0 ? count/5 : count/5+1 }" step="1" var="i">
+			<span>${i}</span>
+			</c:forEach>
+		 </td>
+		</tr>
 	</table>
 	
 </div>

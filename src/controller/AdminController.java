@@ -38,6 +38,9 @@ public class AdminController extends HttpServlet {
 			System.out.println("qqq서치들어옴");
 			Carrier.forward(request, response);
 			break;
+		case COUNT : 
+			System.out.println("COUNT 진입");
+			Carrier.forward(request, response);
 		default:
 			break;
 		}
