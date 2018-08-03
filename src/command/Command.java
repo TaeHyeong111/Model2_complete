@@ -1,0 +1,16 @@
+package command;
+
+import javax.servlet.http.HttpServletRequest;
+
+import lombok.Data;
+
+@Data
+public class Command implements Order{
+	protected String action,domain,page,view; 
+	protected HttpServletRequest request;
+
+	public void execute() {
+		this.view = "/WEB-INF/view/"+domain+"/"+page+".jsp"; //domain = joinForm 
+		System.out.println("디스뷰엔 뭐가올까?"+this.view);
+	}
+}
