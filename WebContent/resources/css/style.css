@@ -134,7 +134,18 @@ div#footer{
 .marginBot50px{margin-bottom: 50px}
 .width300px{width:300px}
 .floatRight{float:right;}
-
+.pagebox {
+	list-style : none;
+	padding: 0;
+	margin: 0;
+}
+.pagebox li{
+	display: inline;
+}
+div#loginForm{
+	margin : 0;
+	width: 200px;
+}
 
 /* table,th,td{border:1px solid gray}
 .width-60pt{width:60%}

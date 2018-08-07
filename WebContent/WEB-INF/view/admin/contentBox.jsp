@@ -8,6 +8,7 @@
 	<input id="searchWord" name="searchWord" type="text"  placeholder="검색어 입력"/>
 	
 	<select name="roll" id="searchOption">
+		  <option value="gender">성별</option>
 		  <option value="userid">아이디</option>
 		  <option value="name">이름</option>
 		  <option value="teamid">팀명</option>
@@ -23,7 +24,7 @@
 			<th>역 할</th>
 			<th>팀 명</th>
 		</tr>
-		<c:forEach 	items="${list}" var="user">   <!-- for(Member m : arr){} -->
+		<c:forEach 	items="${getList}" var="user">   <!-- for(Member m : arr){} -->
 		<tr>
 			<td>${user.userId}</td>
 			<td><a class="username" id="${user.userId}" >${user.name}</a></td>
@@ -36,9 +37,19 @@
 		<tr>
 		<td colspan="6">
 			전체회원수 : '${count}' 
-			<c:forEach begin="1" end="${count %5 == 0 ? count/5 : count/5+1 }" step="1" var="i">
-			<span>${i}</span>
+			<ul class="pageBox">
+			<c:forEach begin="${beginPage}" 
+			end="${endPage}" step="1" varStatus="i">
+			<li>
+			<a class="pageNumber" id="${i.index}">${i.index}</a> <!-- id 유니크해야함 -->
+			</li>
 			</c:forEach>
+			<c:if test="${count gt 25} ">     <!-- (eq ==) (ne !=) (lt <) (le <=) (ge >=)  (gt >)  -->
+			<li>다음▶</li>
+			</c:if>
+			</ul>
+			
+			
 		 </td>
 		</tr>
 	</table>
@@ -75,4 +86,9 @@ class - document.querySelecter에서 호출시키려고 -> Array
 id - document.getElementById value 꺼내기 -> object
 Value - document.getElementById.value -> object (자바스크립트에서 가져오는거)
 name - request.getParameter() dom객체 호출 -> Value (자바에서 가져오는방법)
+
+
 -->
+<%-- <c:forEach begin="1" end="${count %5 == 0 ? count/5 : count/5+1 }" step="1" var="i">
+			<span>${i}</span>
+			</c:forEach> --%>

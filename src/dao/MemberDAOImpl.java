@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import domain.MemberBean;
 import enums.Domain;
@@ -238,6 +239,43 @@ public class MemberDAOImpl implements MemberDAO {
 			e.printStackTrace();
 		}
 	return m;
+	}
+	@Override
+	public List<MemberBean> selectList(Map<?,?> param) {
+		List<MemberBean> lst = new ArrayList<>();
+		String beginRow = (String) param.get("beginRow");
+		String endRow = (String) param.get("endRow");
+		System.out.println(beginRow);
+		System.out.println(endRow);
+		System.out.println("======시작행======");
+		System.out.println("======마지막행======");
+		try {
+			ResultSet rs = (ResultSet) DatabaseFactory.createDatabase(
+					Vendor.ORACLE,
+					DBConstant.USERNAME, 
+					DBConstant.PASSWORD)
+					.getConnection()
+					.createStatement()
+					.executeQuery(String.format(MemberQuery.SELECT_LIST.toString(),
+							Integer.parseInt(beginRow),Integer.parseInt(endRow)));
+							MemberBean mem = null;
+			while(rs.next()) {
+				mem = new MemberBean();
+				mem.setUserId(rs.getString("USERID"));
+				mem.setTeamId(rs.getString("TEAMID"));
+				mem.setName(rs.getString("NAME"));
+				mem.setAge(rs.getString("AGE"));
+				mem.setRoll(rs.getString("ROLL"));
+				mem.setPassword(rs.getString("PASSWORD"));
+				mem.setSsn(rs.getString("SSN"));
+				mem.setGender(rs.getString("GENDER"));
+				lst.add(mem);
+				System.out.println("쿼리옴"+mem);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return lst;
 	}
 	
 }

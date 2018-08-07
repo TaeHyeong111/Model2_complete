@@ -1,7 +1,7 @@
 package enums;
 
 public enum MemberQuery {
-	LOGIN,INSERT_MEMBER,FINDBYID,COUNT_MEMBER,UPDATE_MEMBER,DELETE_MEMBER, SELECT_ALL, SELECT_SOME;
+	SELECT_LIST,LOGIN,INSERT_MEMBER,FINDBYID,COUNT_MEMBER,UPDATE_MEMBER,DELETE_MEMBER, SELECT_ALL, SELECT_SOME;
 	public String toString() {
 		String query = "";
 		switch(this) {
@@ -62,8 +62,18 @@ public enum MemberQuery {
 			+ "SSN, "
 			+ "GENDER FROM MEMBER "
 			+ " WHERE %s LIKE '%s'   "; 
-			break;		
+			break;	
+		case SELECT_LIST:
+			query = 
+			"select t.* " + 
+			"from " + 
+			"   (select rownum seq, m.* " + 
+			"   from member m " + 
+			"   order by seq desc) t "+ 
+			"where t.seq between '%s' and '%s' "; 
+			
 		}
+		
 		
 		return query;
 	}

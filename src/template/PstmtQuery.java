@@ -11,8 +11,6 @@ public class PstmtQuery extends QueryTemplate {
 
 	@Override
 	void initialize() {
-		System.out.println(map.get("ddddd"+"table"));
-		System.out.println(map.get("qqqqqq"+"column"));
 		map.put("sql", String.format(
 				" SELECT "
 				+ ColumnFinder.find(Domain.MEMBER)

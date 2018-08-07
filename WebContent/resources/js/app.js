@@ -169,6 +169,18 @@ var admin = (()=>{ /* 디폴트생성자부분()) */
 					});
 				}   
 
+				 for(var j of document.querySelectorAll('.pageNumber')){
+					 service.addClass(
+							 j,
+							 'cursor fontColorBlue');
+						j.addEventListener('click',function(){
+							location.href=
+								x+'/admin.do?action=list&'         /*요기 ctx 고쳐야할것같음*/
+								+'page=main&pageNumber='
+								+this.getAttribute('id');
+						
+					});
+				}   
 
 				var form = document.getElementById('seachForm');
 				document.getElementById('searchBtn').addEventListener('click',function(){
