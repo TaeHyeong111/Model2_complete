@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import domain.MemberBean;
 import enums.Domain;
 import service.MemberServiceImpl;
-
+ /*/*/
 public class ListCommand extends Command {
 	public ListCommand(HttpServletRequest request) {
 		setRequest(request);
