@@ -75,7 +75,7 @@
 보안이 안걸려져잇으면 겟방식으로 보냄
 갯방식이면 로케이션밖에 없음
 포스트로 보내는방식은 form 태그 method="post" .submit밖에 없음
-
+  d
 form태그로는 post방식
 get방식은 location.href=""로 보내야함
 여기서 post와 get은 method=""를 의미함 . 
