@@ -24,7 +24,7 @@
 			<th>역 할</th>
 			<th>팀 명</th>
 		</tr>
-		<c:forEach 	items="${getList}" var="user">   <!-- for(Member m : arr){} -->
+		<c:forEach 	items="${list}" var="user">   <!-- for(Member m : arr){} -->
 		<tr>
 			<td>${user.userId}</td>
 			<td><a class="username" id="${user.userId}" >${user.name}</a></td>
@@ -36,17 +36,23 @@
 		</c:forEach>
 		<tr>
 		<td colspan="6">
-			전체회원수 : '${count}' 
-			<ul class="pageBox">
-			<c:forEach begin="${beginPage}" 
-			end="${endPage}" step="1" varStatus="i">
-			<li>
-			<a class="pageNumber" id="${i.index}">${i.index}</a> <!-- id 유니크해야함 -->
-			</li>
-			</c:forEach>
-			<c:if test="${count gt 25} ">     <!-- (eq ==) (ne !=) (lt <) (le <=) (ge >=)  (gt >)  -->
-			<li>다음▶</li>
-			</c:if>
+				전체회원수 : ${page.rowCount}
+				<ul class="pageBox" >
+					<c:if test="${existPrev}">
+						<li>◀PREV</li>
+					</c:if>
+					<c:forEach begin="${page.beginPage}" 
+						end="${page.endPage}" 
+						step="1" varStatus="i">
+						<li>
+							<a id="${i.index}" class="pageNumber">
+								${i.index}
+							</a>
+						</li>
+					</c:forEach>
+					<c:if test="${page.existNext}">
+						<li id="${page.nextBlock}" class="pageNumber">NEXT▶</li>
+					</c:if>
 			</ul>
 			
 			

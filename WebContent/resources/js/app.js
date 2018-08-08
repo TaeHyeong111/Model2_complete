@@ -181,7 +181,11 @@ var admin = (()=>{ /* 디폴트생성자부분()) */
 						
 					});
 				}   
-
+				 document.getElementById('pageNumber').addEventListener('click',function(){
+					 alert("click"+"6");
+					 location.href=x+'/admin.do?action=list&page=main&page=main&pageNumber='+this.getAttribute('id');
+				 });
+				
 				var form = document.getElementById('seachForm');
 				document.getElementById('searchBtn').addEventListener('click',function(){
 				            location.href=(form.searchOption.value==='userid') ?
