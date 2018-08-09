@@ -18,7 +18,7 @@ public class RetrieveCommand extends Command {
 	@Override
 	public void execute() {
 		System.out.println("리트리브들어옴");
-	request.setAttribute("user", MemberServiceImpl.getInstance().findById((request.getParameter("userid")))); //memberDetail에서 uesr 사용
+	request.setAttribute("user", MemberServiceImpl.getInstance().retreieve((request.getParameter("userid")))); //memberDetail에서 uesr 사용
 	System.out.println(request.getAttribute("유저에는 모가있을까"+"user"));
 		super.execute();
 	}

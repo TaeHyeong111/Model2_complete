@@ -16,7 +16,7 @@
 	
 	if (MemberServiceImpl.getInstance().login(m)){
 		m.setPassword(request.getParameter("newpassword"));
-		MemberServiceImpl.getInstance().updateMemberInformation(m);
+		MemberServiceImpl.getInstance().modify(param);
 		%> 비밀번호 변경 완료 <%
 	} else{
 		%> 비밀번호 오류 <%

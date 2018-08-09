@@ -5,17 +5,6 @@ var mem = (function() {
 (function() {
 }()) // grooby
 
-
-
-/*
- * var service = (()=>{ return { nullChecker : x=>{ var i = 0; var j = { checker :
- * true, text : '필수입력값이 없습니다' }; for(i in x){ if(x[i] === ''){ j.checker =
- * false; } return j; }, addClass : (dom,cName)=>{ var arr = cName.split(" ");
- * if(arr.indexOf(cName) == -1){ dom.className += " " + cName; } } }
- * 
- * })();
- */
-
 var service = (()=>{
 	return {
 		nullChecker : x=>{
@@ -91,6 +80,42 @@ var member = (()=> {
 	})();
 
 /* var admin = (()=>{return{};})(); */
+var common = (()=>{
+	return{
+		main : x => {
+			document.getElementById('moveAdmin').addEventListener('click', ()=>{	
+				alert('Admin 이벤트 체크 !!');
+				var isAdmin = confirm('관리자입니까');	// window 생략가능 따라서 BOM의 method 밑도 끝도없이 쓰면 BOM의 method
+				if(isAdmin){
+					var password = prompt('관리자비번을 입력 바랍니다');
+					if(password == 1){
+						router.move({
+							 ctx : x,
+							 domain : 'admin',
+							 action : 'search',
+							 page : 'main'
+						});
+					}else{
+						alert('비밀번호가 틀렸습니다');
+					}
+				}else{
+					alert('관리자만 접근이 허용됩니다');
+				}
+			});
+		}
+	};})();
+
+var router = (()=> {
+	return {
+		move : x => { // 키값(String), 객체
+			location.href =
+				x.ctx + '/' 
+				+ x.domain 
+				+ '.do?action=' + x.action
+				+ '&page='	+ x.page
+}}; 
+})();
+
 var admin = (()=>{ /* 디폴트생성자부분()) */
 	return{
 		check : x=>{
@@ -175,15 +200,14 @@ var admin = (()=>{ /* 디폴트생성자부분()) */
 							 'cursor fontColorBlue');
 						j.addEventListener('click',function(){
 							location.href=
-								x+'/admin.do?action=list&'         /*요기 ctx 고쳐야할것같음*/
+								x+'/admin.do?action=search&'         /*요기 ctx 고쳐야할것같음*/
 								+'page=main&pageNumber='
 								+this.getAttribute('id');
 						
 					});
 				}   
 				 document.getElementById('pageNumber').addEventListener('click',function(){
-					 alert("click"+"6");
-					 location.href=x+'/admin.do?action=list&page=main&page=main&pageNumber='+this.getAttribute('id');
+					 location.href=x+'/admin.do?action=search&page=main&page=main&pageNumber='+this.getAttribute('id');
 				 });
 				
 				var form = document.getElementById('seachForm');
@@ -201,16 +225,8 @@ var admin = (()=>{ /* 디폴트생성자부분()) */
 		
 	};})();
 
-var router = (()=> {
-	return {
-		move : x => { // 키값(String), 객체
-			location.href =
-				x.context + '/' 
-				+ x.domain 
-				+ '.do?action=' + x.action
-				+ '&page='	+ x.page
-}}; 
-})();
+
+
 /* 제이슨은 속성도 들어올수있고 기능도 들어올수있어 OBJECT임 */ 
 /* 펑션만 있으면 개체 */
 /*주*/

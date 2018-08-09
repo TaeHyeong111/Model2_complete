@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.Carrier;
-import command.Sentry;
+import command.Receiver;
 import domain.MemberBean;
 import enums.Action;
 import javafx.scene.AccessibleAction;
@@ -24,23 +24,18 @@ public class AdminController extends HttpServlet {
 	protected void service(
 			HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException {
-		Sentry.init(request);
-		switch(Action.valueOf(Sentry.cmd.getAction().toUpperCase())) {
-		case MOVE : 
-				Carrier.forward(request, response);
-		case LIST : 
-			Carrier.forward(request, response);
+		Receiver.init(request);
+		switch(Action.valueOf(Receiver.cmd.getAction().toUpperCase())) {
+				
 		case RETRIEVE : 
-			System.out.println("서치들어옴");
 			Carrier.forward(request, response);
 			break;
 		case SEARCH : 
-			System.out.println("qqq서치들어옴");
 			Carrier.forward(request, response);
 			break;
-		case COUNT : 
-			System.out.println("COUNT 진입");
+		case MOVE : 
 			Carrier.forward(request, response);
+			
 		default:
 			break;
 		}

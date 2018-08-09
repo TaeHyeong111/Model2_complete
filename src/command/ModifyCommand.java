@@ -1,13 +1,16 @@
 package command;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import domain.MemberBean;
 import enums.Domain;
 import service.MemberServiceImpl;
 
-public class UpdateCommand extends Command {
-	public UpdateCommand(HttpServletRequest request) {
+public class ModifyCommand extends Command {
+	public ModifyCommand(HttpServletRequest request) {
 		setRequest(request);
 		setDomain(request.getServletPath()
 				.substring(1,
@@ -19,16 +22,15 @@ public class UpdateCommand extends Command {
 	
 	@Override
 	public void execute() {
-		switch(Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
+		switch(Domain.valueOf(Receiver.cmd.domain.toUpperCase())) {
 		case MEMBER :
 			System.out.println("update 들어옴!!!");
-			MemberBean mem = new MemberBean();
-			mem.setUserId(((MemberBean)request.getSession().getAttribute("user")).getUserId());
-			mem.setPassword(request.getParameter("password"));
-			mem.setTeamId(request.getParameter("teamid"));
-			mem.setRoll(request.getParameter("roll"));
-			System.out.println("매미는맴맴"+mem);
-			MemberServiceImpl.getInstance().updateMemberInformation(mem);
+			Map<String,Object> updateMap = new HashMap<>();
+			updateMap.put("userid", (((MemberBean) request.getSession().getAttribute("user")).getUserId()));
+			updateMap.put("password", request.getParameter("password"));
+			updateMap.put("teamid", request.getParameter("teamid"));
+			updateMap.put("roll", request.getParameter("roll"));
+			MemberServiceImpl.getInstance().modify(updateMap);
 			System.out.println("update 성공!!");
 			break;
 		default : 

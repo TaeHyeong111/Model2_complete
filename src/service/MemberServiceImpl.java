@@ -13,52 +13,35 @@ public class MemberServiceImpl implements MemberService {
 	public static MemberService getInstance() {return instance;}
 	private MemberServiceImpl() {}
 	List<MemberBean> memberList;
-	
-	
 	@Override
-	public void createMember(MemberBean member) {
-		MemberDAOImpl.getInstance().insertMember(member);		
-	}
-	
-	@Override
-	public List<MemberBean> listMember() {
-		return MemberDAOImpl.getInstance().selectAllmemberList();
-	}
-
-	@Override
-	public List<MemberBean> findMemberByTeamName(String name) {
-		return MemberDAOImpl.getInstance().selectMemberBySearchWord(name);
-	}
-
-	@Override
-	public MemberBean findById(String id) {
-		return  MemberDAOImpl.getInstance().selectFindById(id);
-	}
-
-	@Override
-	public int memberCount() {
-		return MemberDAOImpl.getInstance().countMember();
-	}
-
-	@Override
-	public void updateMemberInformation(MemberBean member) {
-		MemberDAOImpl.getInstance().updateMemberInformation(member);		
+	public void add(MemberBean member) {
 		
 	}
-
 	@Override
-	public void deleteMemberInformation(MemberBean member) {
-		MemberDAOImpl.getInstance().deleteMemberInformation(member);
+	public List<MemberBean> search(Map<?, ?> param) {
+		return MemberDAOImpl.getInstance().selectSome(param);
+	}
+	@Override
+	public MemberBean retreieve(String id) {
+		return null;
+	}
+	@Override
+	public int Count() {
+		return MemberDAOImpl.getInstance().count();
+	}
+	@Override
+	public void modify(Map<?, ?> param) {
+		
+	}
+	@Override
+	public void remove(MemberBean member) {
 		
 	}
 	@Override
 	public boolean login(MemberBean member) {
-		return(MemberDAOImpl.getInstance().login(member)!=null);
+		return false;
 	}
-	@Override
-	public List<MemberBean> getlist(Map<?,?> param) {
-		return MemberDAOImpl.getInstance().selectList(param);
-	}
-
-
+	
+	
+	
 }

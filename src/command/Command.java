@@ -11,6 +11,5 @@ public class Command implements Order{
 
 	public void execute() {
 		this.view = "/WEB-INF/view/"+domain+"/"+page+".jsp"; //domain = joinForm 
-		System.out.println("디스뷰엔 뭐가올까?"+this.view);
 	}
 }

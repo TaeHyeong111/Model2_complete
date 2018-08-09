@@ -24,7 +24,7 @@ public class LoginCommand extends Command {
 		System.out.println("익스큐트 빈들어옴"+bean);
 		if (MemberServiceImpl.getInstance().login(bean)) {
 			request.setAttribute("match", "TRUE");
-			request.getSession().setAttribute("user", MemberServiceImpl.getInstance().findById(request.getParameter("userid")));
+			request.getSession().setAttribute("user", MemberServiceImpl.getInstance().retreieve(request.getParameter("userid")));
 			//키,벨류   뒷놈이 멤버서비스임플에 값을 가져가 실행하여 user로 값을 전달함.
 			System.out.println("리퀘스트 유저임"+request.getSession().getAttribute("user"));
 		}else {

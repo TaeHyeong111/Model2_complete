@@ -1,77 +1,73 @@
 package enums;
 
+import template.ColumnFinder;
+
 public enum MemberQuery {
-	SELECT_LIST,LOGIN,INSERT_MEMBER,FINDBYID,COUNT_MEMBER,UPDATE_MEMBER,DELETE_MEMBER, SELECT_ALL, SELECT_SOME;
+	INSERT,
+	LIST,SEARCH,RETRIEVE,COUNT,
+	UPDATE,
+	DELETE,
+	LOGIN;
 	public String toString() {
 		String query = "";
 		switch(this) {
-		case LOGIN :
-			query = 
-			"      SELECT USERID,"
-			+ "    TEAMID,      "
-			+ "    NAME,  "
-			+ "    SSN,   "
-			+ "    ROLL,  "
-			+ "    PASSWORD,      "
-			+ "	   AGE,			"
-			+ "		GENDER,		"
-			+ "		SUBJECT		"
-			+ "    FROM MEMBER          "
-			+ "    WHERE USERID LIKE '%s' AND PASSWORD LIKE '%s'           ";
+		case INSERT : 
+			query =
+			"     INSERT INTO MEMBER ("
+			+     ColumnFinder.find(Domain.MEMBER)   
+			+ " ) "
+			+ "   VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?) ";		
 			break;
-		case INSERT_MEMBER : 
-			query =
-			"     INSERT INTO MEMBER "
-			+ "    (USERID,PASSWORD,SSN,NAME,TEAMID,AGE,ROLL,GENDER)   "
-			+ "   VALUES ('%s','%s','%s','%s','%s','%s','%s','%s') ";		
-			break;
-		case FINDBYID : 
-			query =
-             "    SELECT USERID, TEAMID, NAME, AGE, ROLL, PASSWORD, SSN, GENDER"
-           + "    FROM MEMBER          "
-           + "    WHERE USERID LIKE '%s' ";		
-			break;
-		case COUNT_MEMBER : 
-			query =
-             "      SELECT COUNT(*) AS count FROM MEMBER";		
-			break;
-		case UPDATE_MEMBER : 
-			query =
-            "      UPDATE MEMBER		" 
-			+"		SET PASSWORD = '%s', TEAMID = '%s', ROLL = '%s'	" 
-           +"		WHERE USERID LIKE '%s'	";		
-			break;
-		case DELETE_MEMBER : 
-			query =
-			"	DELETE FROM MEMBER "
-			+ " WHERE USERID LIKE '%s'"
-			+ " AND PASSWORD LIKE '%s'";
-			break;		
-		case SELECT_ALL : 
-			query =
-			"	SELECT USERID, TEAMID, NAME, AGE, ROLL, PASSWORD,SSN,GENDER FROM MEMBER "; 
-			break;		
-		case SELECT_SOME : 
-			query =
-			"	SELECT USERID, "
-			+ "TEAMID, "
-			+ "NAME, "
-			+ "AGE, "
-			+ "ROLL, "
-			+ "PASSWORD, "
-			+ "SSN, "
-			+ "GENDER FROM MEMBER "
-			+ " WHERE %s LIKE '%s'   "; 
-			break;	
-		case SELECT_LIST:
+		case LIST:
 			query = 
 			"select t.* " + 
 			"from " + 
 			"   (select rownum seq, m.* " + 
 			"   from member m " + 
 			"   order by seq desc) t "+ 
-			"where t.seq between '%s' and '%s' "; 
-			
+			"where t.seq between ? and ? "; 
+				break;
+		case SEARCH : 
+			query = 
+			"select t.* " + 
+			"from " + 
+			"   (select rownum seq, m.* " + 
+			"   from member m " + 
+			"	WHERE %s LIKE ? " +
+			"   order by seq desc) t "+ 
+			"where t.seq between ? and ? "; 
+				break;
+		case RETRIEVE : 
+			query = " SELECT "
+					+ ColumnFinder.find(Domain.MEMBER)
+					+ " FROM %s "
+					+ " WHERE %s "
+					+ " LIKE ? " 
+					;
+			break;
+		case COUNT : 
+			query =
+             "      SELECT COUNT(*) AS count FROM MEMBER";		
+			break;
+		case UPDATE : 
+			query =
+            " UPDATE "
+			+" MEMBER SET %s = ? "
+            +" WHERE USERID LIKE ? ";
+			break;
+		case DELETE : 
+			query =
+			"	DELETE FROM MEMBER "
+			+ " WHERE USERID LIKE '%s'"
+			+ " AND PASSWORD LIKE '%s'";
+			break;		
+		case LOGIN :
+			query = 
+			"      SELECT "
+			+      ColumnFinder.find(Domain.MEMBER) 
+			+ "    FROM MEMBER          "
+			+ "    WHERE USERID LIKE '%s' AND PASSWORD LIKE '%s'           ";
+			break;
 		}
 		
 		

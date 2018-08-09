@@ -14,35 +14,27 @@ public class Commander {
             case MOVE : 
                 cmd = new MoveCommand(request);
                 break;
-            case JOIN : 
-                cmd = new CreateCommand(request);
+            case ADD : 
+                cmd = new AddCommand(request);
                 break;
             case LOGIN :
-            	System.out.println("액션 로그인 진입");
             	cmd = new LoginCommand(request); // cmd == sentry.cmd
             	break;
-            case LIST :
-            	cmd = new ListCommand(request);
+            case RETRIEVE : 
+            	cmd = new RetrieveCommand(request);
             	break;
             case SEARCH : 
             	cmd = new SearchCommand(request);
             	break;
-            case RETRIEVE : 
-            	System.out.println("리트리브진입");
-            	cmd = new RetrieveCommand(request);
+            case MODIFY : 
+            	cmd = new ModifyCommand(request);
             	break;
-            case UPDATE : 
-            	cmd = new UpdateCommand(request);
-            	break;
-            case DELETE : 
-            	System.out.println("딜리트커맨더 들어옴");
-            	cmd = new DeleteCommand(request);
+            case REMOVE : 
+            	cmd = new RemoveCommand(request);
             	break;
             case COUNT : 
             	cmd = new CountCommand(request);
             	break;
-            case ADMIN:
-            	cmd = new CountCommand(request);
             default:
                 break;
             }

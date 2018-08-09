@@ -19,9 +19,6 @@
     </div>
 </div>
 </body>
-<script>
-admin.main('${ctx}');
-</script>
 </html>
 
 

@@ -1,32 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="ctx" value="<%=application.getContextPath() %>" /> --%>
 <!doctype html>
 <html lang="en">
 <jsp:include page="../common/head.jsp"/>
 <body>
 <div id="wrapper">
     <div id="header">
+     <jsp:include page="../common/titleBox.jsp"/>
+      <jsp:include page="../common/loginBox.jsp"/>
+       <jsp:include page="../common/menuBox.jsp"/>
     </div> <!-- header end -->
     <div id="content">
-    <jsp:include page="../member/search.jsp"/>
+    <jsp:include page="../common/contentBox.jsp"/>
     </div> <!-- content end -->
     <div id = "footer">
     <jsp:include page="../common/footerBox.jsp"/>
     </div>
-    <div id = "menu">
-    <jsp:include page="../common/menuBox.jsp"/>
-    </div>
 </div>
 </body>
-<script>
-admin.main('${ctx}');
-</script>
 </html>
-
-
-
-
 
 
 <%-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

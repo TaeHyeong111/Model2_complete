@@ -8,21 +8,5 @@
 	</ul>
 </div>
 <script>
-document.getElementById('moveHome').addEventListener('click',
-		function() {
-		router.move({context : '${ctx}',
-					domain : 'common'
-					});
-		});
-document.getElementById('moveAbout').addEventListener('click',
-		function() {
-		router.move({context : '${ctx}',
-					domain : 'member',
-					action : 'move',
-					page : 'mypage'});
-		});
-document.getElementById('moveAdmin').addEventListener('click',
-		function() {
-		admin.check("${ctx}")
-		});
+
 </script>

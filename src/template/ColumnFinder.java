@@ -21,7 +21,6 @@ public class ColumnFinder {
 		    s+=(i!=(f.length-1))?
 		    	f[i].getName()+",":
 		    		f[i].getName();
-		    System.out.println("에프"+f);
 		 }
 		 return s;
 	}

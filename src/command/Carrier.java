@@ -7,10 +7,8 @@ public class Carrier {
 	public static void forward(HttpServletRequest request, 
 			HttpServletResponse response) {
 		try {
-			System.out.println("Sentry.cmd.getView() is "
-					+Sentry.cmd.getView());
 			request
-			.getRequestDispatcher(Sentry.cmd.getView())
+			.getRequestDispatcher(Receiver.cmd.getView())
 			.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

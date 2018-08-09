@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.Carrier;
-import command.Sentry;
+import command.Receiver;
 import domain.MemberBean;
 import enums.Action;
 import javafx.scene.AccessibleAction;
@@ -24,16 +24,13 @@ public class MemberController extends HttpServlet {
 	protected void service(
 			HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException {
-		Sentry.init(request);
+		Receiver.init(request);
 		System.out.println("여기는 멤버 컨트롤러");
 		System.out.println(request);
-		switch(Action.valueOf(Sentry.cmd.getAction().toUpperCase())) {
-		case MOVE : 
-			System.out.println("액션"+Action.valueOf(Sentry.cmd.getAction().toUpperCase()));
-				Carrier.forward(request, response);
-			break;
-		case JOIN :
-			System.out.println("액션"+Action.valueOf(Sentry.cmd.getAction().toUpperCase()));
+		switch(Action.valueOf(Receiver.cmd.getAction().toUpperCase())) {
+		
+		case ADD :
+			System.out.println("액션"+Action.valueOf(Receiver.cmd.getAction().toUpperCase()));
 			Carrier.redirect(request, response,
 					"/member.do?action=move&page=userLoginForm");
 			break;
@@ -46,13 +43,17 @@ public class MemberController extends HttpServlet {
 			}
 			break;
 			
-		case UPDATE : 
+		case MODIFY : 
 			System.out.println("업데이트들어옴");
 			Carrier.redirect(request, response,"");
 			break;
-		case DELETE : 
+		case REMOVE : 
 			System.out.println("===딜리트진입===");
 			Carrier.redirect(request, response,"");
+			break;
+		case MOVE : 
+			System.out.println("액션"+Action.valueOf(Receiver.cmd.getAction().toUpperCase()));
+				Carrier.forward(request, response);
 			break;
 		default:
 			break;
