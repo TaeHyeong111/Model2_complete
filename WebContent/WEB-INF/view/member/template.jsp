@@ -1,27 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="service.*" %>
-<%@ page import="domain.*" %>
-
 <!doctype html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>Update result</title>
-</head>
+<jsp:include page="../common/head.jsp"/>
 <body>
-<%
-	MemberBean m = new MemberBean();
-	m.setUserId(request.getParameter("userid"));
-	m.setPassword(request.getParameter("password"));
-	
-	if (MemberServiceImpl.getInstance().login(m)){
-		m.setPassword(request.getParameter("newpassword"));
-		MemberServiceImpl.getInstance().modify(param);
-		%> 비밀번호 변경 완료 <%
-	} else{
-		%> 비밀번호 오류 <%
-	}
-	
-%>
-</body>
-</html>
+<div id="wrapper">
+	<div id="header">
+		<jsp:include page="../common/titleBox.jsp"/>
+		<%-- <jsp:include page="../common/loginBox.jsp"/> --%>
+		<jsp:include page="../common/menuBox.jsp"/>
+	</div> 
+	<div id="content">
+		
+	</div></div>
+	<div id="footer">
+		 <jsp:include page="../common/footerBox.jsp"/>	
+	</div>
+	</body></html>

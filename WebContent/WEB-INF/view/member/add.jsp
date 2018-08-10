@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
-<jsp:include page="../common/head.jsp" />
 <body>
-	<h1>Login</h1>
+	<h1>Join</h1>
 	<form id="joinForm" name="joinForm">
 		Name : <input type="text" name="name"/><br>
 		User ID : <input type="text" name="userid" /> <br>
@@ -26,7 +25,7 @@
 						
 						var json = {
 							name : ['age','gender','action',"page"],
-							value: ['','','join','mypage']
+							value: ['','','add','mypage']
 						}
 						for(var i = 0; i<json.name.length; i++){
 							var node = document.createElement('input');

@@ -13,9 +13,10 @@ public class PstmtQuery extends QueryTemplate {
 	@Override
 	void initialize() {
 		switch((String)map.get("flag")) {
+		case "insert" : 
+			map.put("sql", MemberQuery.INSERT.toString());
+			break;
 		case "list":
-			System.out.println("13.case list 진입");
-			System.out.println("14.멤버쿼리서치"+MemberQuery.SEARCH);
 			map.put("sql",MemberQuery.LIST.toString()); 
 			break;
 		case "count" : 
@@ -26,7 +27,6 @@ public class PstmtQuery extends QueryTemplate {
 	}
 	@Override
 	void startPlay() {
-		System.out.println("15.startPlay진입");
 		switch((String)map.get("flag")) {
 		case "list" : 
 			try {
@@ -85,7 +85,6 @@ public class PstmtQuery extends QueryTemplate {
 				e.printStackTrace();
 			} 
 		case "count" :
-			System.out.println("카운트진입");
 			try {
 				ResultSet rs = pstmt.executeQuery();
 				

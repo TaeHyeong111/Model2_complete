@@ -24,22 +24,23 @@ public class MemberController extends HttpServlet {
 	protected void service(
 			HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("멤버두 들어옴");
 		Receiver.init(request);
-		System.out.println("여기는 멤버 컨트롤러");
-		System.out.println(request);
 		switch(Action.valueOf(Receiver.cmd.getAction().toUpperCase())) {
-		
+		case MOVE : 
+				Carrier.forward(request, response);
+			break;
 		case ADD :
-			System.out.println("액션"+Action.valueOf(Receiver.cmd.getAction().toUpperCase()));
+			System.out.println("케이스탐");
 			Carrier.redirect(request, response,
-					"/member.do?action=move&page=userLoginForm");
+					"/member.do?action=move&page=login");
 			break;
 		case LOGIN : 
 			System.out.println("========");
 			if(request.getAttribute("match").equals("TRUE")) {
 				Carrier.forward(request, response);
 			}else {
-				Carrier.redirect(request, response,"/member.do?action=move&page=userLoginForm");
+				Carrier.redirect(request, response,"/member.do?action=move&page=login");
 			}
 			break;
 			
@@ -51,10 +52,7 @@ public class MemberController extends HttpServlet {
 			System.out.println("===딜리트진입===");
 			Carrier.redirect(request, response,"");
 			break;
-		case MOVE : 
-			System.out.println("액션"+Action.valueOf(Receiver.cmd.getAction().toUpperCase()));
-				Carrier.forward(request, response);
-			break;
+		
 		default:
 			break;
 		}

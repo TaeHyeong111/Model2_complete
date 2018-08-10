@@ -4,10 +4,7 @@
 <jsp:include page="../common/head.jsp" />
 <body>
 <div id="wrapper">
-    <div id="header">
-    <jsp:include page="../common/titleBox.jsp" />
-    <jsp:include page="../common/menuBox.jsp" />
-    </div>
+    
 
     <div id="content">
         <table id="mypage-table">  
@@ -42,9 +39,7 @@
          <a id="myPageMoveToDelete"> DELETE FORM </a> 
     </div>
     </div></div>
-    <div id="footer">
-        <jsp:include page="../common/footerBox.jsp" />
-    </div>
+    
     <script>
     document.getElementById('myPageMoveToUpdate').addEventListener('click',
             function() {

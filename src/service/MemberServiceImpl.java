@@ -15,7 +15,7 @@ public class MemberServiceImpl implements MemberService {
 	List<MemberBean> memberList;
 	@Override
 	public void add(MemberBean member) {
-		
+	  MemberDAOImpl.getInstance().insert(member);
 	}
 	@Override
 	public List<MemberBean> search(Map<?, ?> param) {

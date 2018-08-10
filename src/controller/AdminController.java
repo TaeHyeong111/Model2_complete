@@ -31,6 +31,7 @@ public class AdminController extends HttpServlet {
 			Carrier.forward(request, response);
 			break;
 		case SEARCH : 
+			System.out.println("서치들어옴");
 			Carrier.forward(request, response);
 			break;
 		case MOVE : 

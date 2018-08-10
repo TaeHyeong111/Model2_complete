@@ -10,6 +10,6 @@ public class Command implements Order{
 	protected HttpServletRequest request;
 
 	public void execute() {
-		this.view = "/WEB-INF/view/"+domain+"/"+page+".jsp"; //domain = joinForm 
+		this.view = "/WEB-INF/view/"+domain+"/main.jsp"; //domain = joinForm 
 	}
 }

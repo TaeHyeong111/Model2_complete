@@ -10,6 +10,7 @@ public class Carrier {
 			request
 			.getRequestDispatcher(Receiver.cmd.getView())
 			.forward(request, response);
+			System.out.println("??? : "+Receiver.cmd.getView());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -19,6 +20,7 @@ public class Carrier {
 			HttpServletResponse response,String url){
 		try {
 			response.sendRedirect(request.getContextPath()+url);
+			System.out.println("?? : "+request.getContextPath()+url);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 

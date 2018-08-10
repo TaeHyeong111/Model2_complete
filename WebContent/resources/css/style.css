@@ -1,158 +1,131 @@
 body{
-	font-family:'Malgun gothic', 'Verdana';
-	background-color : #c0c0c0;
-	color: #fff;
-	margin:0; 바깥쪽
-	padding:0; 안쪽
+	font-family: 'Malgun Gothic', 'Verdana';
+	color: #000000;
+	margin: 0;
+	padding: 0;
 }
-h1,h2,h3,h4,h5,h6{
-	font-size:1.5em;
+h1, h2, h3, h4, h5, h6{
+	font-size: 1.5em;
 }
-
 h1{
-	font-size:2em;
-	padding-bottome: 0;
-	margin-bottom: 0; 
-}
-
-div#wrapper{
-	width :90%;
-	padding-bottom:0;
-	margin-bottom:0;
-	margin-left:auto;
-	margin-right:auto;
-}
-
-div#header{
-	position: relative;  기준이 wrapper 기준이다.  
+	font-size: 2em;
+	padding-bottom: 0;
 	margin-bottom: 0;
-	padding:0;
-	color:#000;
+}
+html, body,table, #wrapper{padding: 0;margin: 0;padding: 0;border: 0;}
+/* unvisited link */
+a:link {color: black;}
+/* visited link */
+a:visited {color: green;}
+/* mouse over link */
+a:hover {color: #ff0000;font-size: 15px}
+/* selected link */
+a:active {color: blue;}
+/*common pages*/
+div#wrapper{
+	width: 90%;
+	padding-bottom: 0;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+div#header{
+	position: relative;
+	margin-bottom: 0;
+	padding: 0;
+	color: #fff;
 }
 div#title{
-	float: left; 뛰운다음에 왼쪽으로 붙인다.
-	text-align:left;
-	display:block;
+	float: left;
+	text-align: left;
+	display: block;
 }
-
-table#mypage-table{
-    width:50%;
-    height:45%;
-    text-align: center;
-    font-size: 1.0em;
-    border: 1px solid black;
-}
-
-td#mypage-img{
-    width:180px;
-}
-
-div#login-box{
+div#login-Box{
 	float: right;
-	margin: 10px; 아무것도 받향 안주면 동서남북 다 적용된다.;
-	font-size:1.1em;	감으로 수치를 잡아야 한다.
+	margin: 0;
+	font-size: 1.1em;
 	display: block;
-	color: #fff
+	color: #000000;
 }
-
-div#mypage-bottom{
-	float: center;
-	margin: 10px; 아무것도 받향 안주면 동서남북 다 적용된다.;
-	font-size:1.1em;	감으로 수치를 잡아야 한다.
-	display: block;
-	color: #fff
+div#login-Box a:hover{
+	color: #000000;
+	text-decoration: none;
 }
-
-div#mypage-bottom a:hover{  지나가면 효과를 줘라 
-	color: #408080;
-	text-decoration:none; a tag 밑줄이 없어짐
+div#login-Box a:active{
+	color: #000000;
+	text-decoration: none;
 }
-div#mypage-bottom a:active{  지나가면 효과를 줘라 
-	color: #ff0000;
-	text-decoration:none; a tag 밑줄이 없어짐
-}
-
-
-div#login-box a:hover{  지나가면 효과를 줘라 
-	color: #408080;
-	text-decoration:none; a tag 밑줄이 없어짐
-}
-div#login-box a:active{  지나가면 효과를 줘라 
-	color: #ff0000;
-	text-decoration:none; a tag 밑줄이 없어짐
-}
-
-div#header h1{ overriding 
-	color : #fff;
-	padding: 5px 0; 좌우는 0으로 적용
-	margin : 0;
-	border : none;
-	line-height:2em;
-	font-weight:bold;
-	font-size:32px;
-}
-
-div#content{
-	padding:15px 30px 15px 30px; 12시 3시 6시 9시 
-	background-color : #008000;
-	min-height:500px; 최소 높이
-}
-
-div#content-box{
-	clear:both; default 위에서 relative에서 초기화 되서 static으로 됨
-	margin-top:30px;
+div#header{border: 3px solid black;}
+div#header h1{
+	color: #ffffff;
+	padding: 5px 0;
+	margin: 0;
+	border: none;
 	text-align:center;
+	line-height: 2em;
+	font-weight: bold;
+	font-size: 32px;
+	
 }
-
-div#menu-box{
+div#content{
+	padding: 15px 30px;
+	background-color: #ffffff;
+	margin-bottom: 30px;
+	min-height: 400px;
+	color: black;
+	border: 3px solid black
+}
+div#contentBox{
 	clear:both;
-	margin-top:40px;
+	margin-top: 40px; 
+}
+div#menuBox{
+	clear:both;
+	margin-top: 40px;
 }
 ul#menu{
 	text-align: right;
-	margin:0;
-	border-bottom:1px #808080;
-	position:relative;	
+	margin: 0;
+	border-bottom: 1px #8000ff;
+	position: relative;
 }
-
 ul#menu li{
-	display: inline; 줄바꿈하지말고 코딩 
-	list-style:none;
-	background-color:#808040;	
+	display: inline;
+	list-style: none;
+	background-color: #ff8000;
 }
-
 ul#menu li a{
 	padding: 10px 20px;
-	background-color:#408080;
-	font-weight:bold;
-	text-decoration: none; 밑에 줄 삭제
+	background-color: #c0c0c0;
+	font-weight: bold;
+	text-decoration: none;
 	line-height: 2.8em;
 	color : black;
 }
-
-ul#menu li a:hover{ 마우스 지나가면 
-	background-color:#80ffff;
-	text-decoration: none; 밑에 줄 삭제
+ul#menu li a:hover{
+	background-color: #0080ff;
+	text-decoration: none;
 }
-ul#menu li a:active{ 
-	background-color:#0080ff;
-	text-decoration: none; 밑에 줄 삭제
+ul#menu li a:active{
+	background-color: #00ff00;
+	text-decoration: none;
 }
-
 div#footer{
 	clear:both;
-	color:#fff;
-	text-align:center;
-	margin:0;
-	padding:10px 0;
-	line-height:normal;
-	font-size: 1.5em;
-} 
-table,th,td{border:1px solid gray} 
+	color: #000000;
+	text-align: center;
+	margin: 0;
+	padding: 10px 0;
+	line-height: normal;
+	font-size: 0.5em;
+}
+table{border:1px solid black}
+table tr{border:1px solid black}
+table tr th{border:1px solid black}
+table tr td{border:1px solid black}
 .bgColorYellow{background-color: #ffff00}
-.bgColorBlue{background-color:blue}
 .center{margin: 0 auto}
-.width100px{width:100px}
+.width100pt{width:100%}
 .width90pt{width:90%}
 .width80pt{width:80%}
 .fontColorBlue{color:blue}
@@ -164,12 +137,22 @@ table,th,td{border:1px solid gray}
 .marginBot30px{margin-bottom: 30px}
 .marginBot50px{margin-bottom: 50px}
 .width300px{width:300px}
-.floatRight{float:right}
+.floatRight{float:right;}
+div#titleBox{background-color: #000}
 .pageBox{
-	list-style: none;
-	padding: 0;
-	margin : 0;
+    list-style: none; /* Remove list bullets */
+    padding: 0;
+    margin: 0 auto;
+     width: 200px;
 }
 .pageBox li{
-	display:inline;
+    display:inline;
 }
+div#loginForm{
+	margin:0 auto;
+	width: 200px;
+}
+div#login-box{
+	color: black;
+}
+div#

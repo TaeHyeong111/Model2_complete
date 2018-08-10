@@ -58,8 +58,8 @@ public enum MemberQuery {
 		case DELETE : 
 			query =
 			"	DELETE FROM MEMBER "
-			+ " WHERE USERID LIKE '%s'"
-			+ " AND PASSWORD LIKE '%s'";
+			+ " WHERE USERID LIKE '%s' "
+			+ " AND PASSWORD LIKE '%s' ";
 			break;		
 		case LOGIN :
 			query = 
