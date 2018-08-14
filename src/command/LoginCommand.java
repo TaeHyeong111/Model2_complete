@@ -28,6 +28,7 @@ public class LoginCommand extends Command {
 			//키,벨류   뒷놈이 멤버서비스임플에 값을 가져가 실행하여 user로 값을 전달함.
 			System.out.println("리퀘스트 유저임"+request.getSession().getAttribute("user"));
 		}else {
+			System.out.println("엘스를탐");
 			request.setAttribute("match", "FALSE");
 		}
 		super.execute();

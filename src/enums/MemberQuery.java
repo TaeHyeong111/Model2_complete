@@ -9,17 +9,17 @@ public enum MemberQuery {
 	DELETE,
 	LOGIN;
 	public String toString() {
-		String query = "";
+		String sql = "";
 		switch(this) {
 		case INSERT : 
-			query =
+			sql =
 			"     INSERT INTO MEMBER ("
 			+     ColumnFinder.find(Domain.MEMBER)   
 			+ " ) "
 			+ "   VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?) ";		
 			break;
 		case LIST:
-			query = 
+			sql = 
 			"select t.* " + 
 			"from " + 
 			"   (select rownum seq, m.* " + 
@@ -28,7 +28,7 @@ public enum MemberQuery {
 			"where t.seq between ? and ? "; 
 				break;
 		case SEARCH : 
-			query = 
+			sql = 
 			"select t.* " + 
 			"from " + 
 			"   (select rownum seq, m.* " + 
@@ -38,40 +38,39 @@ public enum MemberQuery {
 			"where t.seq between ? and ? "; 
 				break;
 		case RETRIEVE : 
-			query = " SELECT "
-					+ ColumnFinder.find(Domain.MEMBER)
-					+ " FROM %s "
-					+ " WHERE %s "
-					+ " LIKE ? " 
-					;
+			sql =
+            "select * " 
+            + " FROM MEMBER " 
+            + " WHERE USERID " 
+            + " LIKE ? ";
 			break;
 		case COUNT : 
-			query =
+			sql =
              "      SELECT COUNT(*) AS count FROM MEMBER";		
 			break;
 		case UPDATE : 
-			query =
+			sql =
             " UPDATE "
 			+" MEMBER SET %s = ? "
             +" WHERE USERID LIKE ? ";
 			break;
 		case DELETE : 
-			query =
+			sql =
 			"	DELETE FROM MEMBER "
 			+ " WHERE USERID LIKE '%s' "
 			+ " AND PASSWORD LIKE '%s' ";
 			break;		
 		case LOGIN :
-			query = 
+			sql = 
 			"      SELECT "
-			+      ColumnFinder.find(Domain.MEMBER) 
+			+      "*" 
 			+ "    FROM MEMBER          "
-			+ "    WHERE USERID LIKE '%s' AND PASSWORD LIKE '%s'           ";
+			+ "    WHERE USERID LIKE ? AND PASSWORD LIKE ?           ";
 			break;
 		}
 		
 		
-		return query;
+		return sql;
 	}
 }
 

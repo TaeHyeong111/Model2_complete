@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import enums.Domain;
-import enums.Term;
+import enums.Path;
 
 @WebServlet("/common.do")
 public class CommonController extends HttpServlet {
@@ -35,11 +35,11 @@ public class CommonController extends HttpServlet {
 			} //GMS-Model2/resources/css
 			i++;
 		}
-		request.getRequestDispatcher(Term.WEBPATH.toString()
+		request.getRequestDispatcher(Path.WEBPATH.toString()
 			+request.getServletPath()
 				.split("/")[1]
 				.split("\\.")[0]
-			+Term.MAIN.toString())
+			+Path.MAIN.toString())
 		.forward(request, response);
 	} //페이지 이동기능
 }

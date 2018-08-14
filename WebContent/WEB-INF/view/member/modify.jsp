@@ -49,6 +49,11 @@
                 </table>
                 <input type="button" id="updateConfirmBtn" value="Update!!!" />
             </form>
+            <form method="POST" enctype="multipart/form-data" 
+            action="${ctx}/member.do?action=fileupload&page=retrieve">
+  파일 업로드 : <input type="file" name="upfile" ><br/><br/>
+  <input type="submit" value="파일업로드"> 
+</form>
         </div>
         
     </div>

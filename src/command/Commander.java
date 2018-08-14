@@ -35,6 +35,9 @@ public class Commander {
             case COUNT : 
             	cmd = new CountCommand(request);
             	break;
+            case FILEUPLOAD : 
+            	cmd = new CountCommand(request);
+            	break;
             default:
                 break;
             }

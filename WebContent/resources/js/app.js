@@ -84,7 +84,6 @@ var common = (()=>{
 	return{
 		main : x => {
 			document.getElementById('moveAdmin').addEventListener('click', ()=>{	
-				alert('Admin 이벤트 체크 !!');
 				var isAdmin = confirm('관리자입니까');	// window 생략가능 따라서 BOM의 method 밑도 끝도없이 쓰면 BOM의 method
 				if(isAdmin){
 					var password = prompt('관리자비번을 입력 바랍니다');
@@ -179,7 +178,7 @@ var admin = (()=>{ /* 디폴트생성자부분()) */
 						'bgColorYellow ');
 						
 					
-
+				
 
 				 for(var i of document.querySelectorAll('.username')){
 					 service.addClass(
@@ -187,8 +186,8 @@ var admin = (()=>{ /* 디폴트생성자부분()) */
 							 'cursor fontColorBlue');
 						i.addEventListener('click',function(){
 							location.href=
-								x+'/admin.do?action=retrieve&'         /*요기 ctx 고쳐야할것같음*/
-								+'page=memberDetail&userid='
+								x+'/member.do?action=retrieve&'         /*요기 ctx 고쳐야할것같음*/
+								+'page=retrieve&userid='
 								+this.getAttribute('id');
 						
 					});
@@ -206,9 +205,9 @@ var admin = (()=>{ /* 디폴트생성자부분()) */
 						
 					});
 				}   
-				 document.getElementById('pageNumber').addEventListener('click',function(){
+				 /*document.getElementById('pageNumber').addEventListener('click',function(){
 					 location.href=x+'/admin.do?action=search&page=main&page=main&pageNumber='+this.getAttribute('id');
-				 });
+				 });*/
 				
 				var form = document.getElementById('seachForm');
 				document.getElementById('searchBtn').addEventListener('click',function(){

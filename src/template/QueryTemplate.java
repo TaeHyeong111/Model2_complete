@@ -1,11 +1,15 @@
 package template;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import domain.MemberBean;
+
 import java.util.Iterator;
 
 import enums.Vendor;
@@ -17,13 +21,15 @@ public abstract class QueryTemplate { //abstract 추상
 	int number;
 	Object o;
 	List<Object> list;
-	Map<String,Object>map;
+	Map<String,Object> map;
 	PreparedStatement pstmt;
+	ResultSet rs = null;
+	MemberBean mem;
 	abstract void initialize();
 	abstract void startPlay();
 	abstract void endPlay();
    
-    public final void play(Map<String,Object>param){
+    public final void play(Map<?, ?> param){
 	   this.number = 0;
 	   this.o = null;
 	   this.list = new ArrayList<>();
@@ -36,9 +42,7 @@ public abstract class QueryTemplate { //abstract 추상
 	   // param 에 담긴 key값을 모두 Iterator<?> keys 에 담음
 	   while(keys.hasNext()) {
 		   String key = (String) keys.next();
-		   System.out.println("윗키 : "+key);
 		   this.map.put(key, param.get(key));
-		   System.out.println("map : "+map.get(key));
 	   }
 	   
 	   initialize();

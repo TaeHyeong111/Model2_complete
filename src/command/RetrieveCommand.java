@@ -18,8 +18,12 @@ public class RetrieveCommand extends Command {
 	@Override
 	public void execute() {
 		System.out.println("리트리브들어옴");
-	request.setAttribute("user", MemberServiceImpl.getInstance().retreieve((request.getParameter("userid")))); //memberDetail에서 uesr 사용
-	System.out.println(request.getAttribute("유저에는 모가있을까"+"user"));
+	request.getSession().setAttribute("user", MemberServiceImpl.getInstance().retreieve((request.getParameter("userid")))); 
+	System.out.println("user : "+request.getAttribute("user"));
+	String img = "";
+	// ImageServiceImpl.getInstance.retrieve();
+	String imgPath = "/upload/"+img;
+	request.setAttribute("img", imgPath);
 		super.execute();
 	}
 }

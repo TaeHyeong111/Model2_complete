@@ -9,7 +9,7 @@
 		 Password : <input	type="text" name="password" /> 
 		 <input id="loginFormBtn" type="button" value="submit" />  
 		 <input type="hidden" name="action"	value="login" />
-		  <input type="hidden" name="page" value="mypage" />
+		  <input type="hidden" name="page" value="retrieve" />
 	</form>
 
 	<script>

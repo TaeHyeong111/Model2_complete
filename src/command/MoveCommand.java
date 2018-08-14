@@ -4,9 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 
 public class MoveCommand extends Command {
 	public MoveCommand(HttpServletRequest request) {
-
 		setRequest(request);
-		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
+		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf("."))); //member
 		setAction(request.getParameter("action"));
 		execute();
 

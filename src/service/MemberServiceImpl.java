@@ -23,7 +23,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	@Override
 	public MemberBean retreieve(String id) {
-		return null;
+		return MemberDAOImpl.getInstance().selectOne(id);
 	}
 	@Override
 	public int Count() {
@@ -39,7 +39,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	@Override
 	public boolean login(MemberBean member) {
-		return false;
+		return (MemberDAOImpl.getInstance().login(member)!=null);
 	}
 	
 	

@@ -9,7 +9,8 @@
     <div id="content">
         <table id="mypage-table">  
         <tr>
-            <th  rowspan='3'>사진 </th> 
+            <th  rowspan='3'>	<img src="${img}/${profile}" alt="" />	</th> 
+            
             <th>아이디</th>
             <th colspan='2'>${user.userId} </th>
         </tr>
@@ -43,19 +44,19 @@
     <script>
     document.getElementById('myPageMoveToUpdate').addEventListener('click',
             function() {
-                router.move({context : '${ctx}',
+                router.move({ctx : '${ctx}',
                             domain : 'member',
                             action : 'move', 
-                            page : 'updateForm'
+                            page : 'modify'
                 });
             });
             
     document.getElementById('myPageMoveToDelete').addEventListener('click',
             function() {
-            router.move({context : '${ctx}',
+            router.move({ctx : '${ctx}',
                 domain : 'member',
                 action : 'move', 
-                page : 'deleteForm'
+                page : 'remove'
                         });
             });
 

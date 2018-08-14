@@ -10,7 +10,6 @@ public class Carrier {
 			request
 			.getRequestDispatcher(Receiver.cmd.getView())
 			.forward(request, response);
-			System.out.println("??? : "+Receiver.cmd.getView());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

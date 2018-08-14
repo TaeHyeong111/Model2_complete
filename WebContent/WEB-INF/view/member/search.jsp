@@ -6,7 +6,7 @@
 	<form id="seachForm" name="seachForm">
 	<input id="searchBtn" type="button" value="제출"/>
 	<input id="searchWord" name="searchWord" type="text"  placeholder="검색어 입력"/>
-	<select name="roll" id="searchOption">
+	<select name="searchOption" id="searchOption">
 		  <option value="gender">성별</option>
 		  <option value="userid">아이디</option>
 		  <option value="name">이름</option>
