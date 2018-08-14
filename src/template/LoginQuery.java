@@ -12,7 +12,7 @@ public class LoginQuery extends QueryTemplate{
 	void initialize() {
 		map.put("sql", String.format(MemberQuery.LOGIN.toString()));
 	}
-	
+	//dd
 	@Override
 	void startPlay() {
 		try {
