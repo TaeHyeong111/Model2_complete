@@ -7,16 +7,24 @@ public enum MemberQuery {
 	LIST,SEARCH,RETRIEVE,COUNT,
 	UPDATE,
 	DELETE,
-	LOGIN;
+	LOGIN, 
+	IMAGE;
 	public String toString() {
 		String sql = "";
 		switch(this) {
 		case INSERT : 
 			sql =
-			"     INSERT INTO MEMBER ("
-			+     ColumnFinder.find(Domain.MEMBER)   
-			+ " ) "
-			+ "   VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?) ";		
+			"INSERT INTO MEMBER("
+			+ "USERID,"
+			+ "TEAMID,"
+			+ "NAME,"
+			+ "ROLL,"
+			+ "PASSWORD,"
+			+ "SSN,"
+			+ "SUBJECT,"
+			+ "GENDER,"
+			+ "AGE) " 
+			+ "VALUES (? ,? ,? ,? ,? ,? ,? ,? ,? ) ";		
 			break;
 		case LIST:
 			sql = 
@@ -50,15 +58,17 @@ public enum MemberQuery {
 			break;
 		case UPDATE : 
 			sql =
-            " UPDATE "
-			+" MEMBER SET %s = ? "
-            +" WHERE USERID LIKE ? ";
+            "UPDATE MEMBER " + 
+            "SET PASSWORD = ? ," + 
+            "SUBJECT = ? ," + 
+            "ROLL = ? " + 
+            "WHERE USERID LIKE ? ";
 			break;
 		case DELETE : 
 			sql =
 			"	DELETE FROM MEMBER "
-			+ " WHERE USERID LIKE '%s' "
-			+ " AND PASSWORD LIKE '%s' ";
+			+ " WHERE USERID LIKE ? "
+			+ " AND PASSWORD LIKE ? ";
 			break;		
 		case LOGIN :
 			sql = 
@@ -68,8 +78,6 @@ public enum MemberQuery {
 			+ "    WHERE USERID LIKE ? AND PASSWORD LIKE ?           ";
 			break;
 		}
-		
-		
 		return sql;
 	}
 }

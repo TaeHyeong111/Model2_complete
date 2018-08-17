@@ -187,7 +187,7 @@ var admin = (()=>{ /* 디폴트생성자부분()) */
 						i.addEventListener('click',function(){
 							location.href=
 								x+'/member.do?action=retrieve&'         /*요기 ctx 고쳐야할것같음*/
-								+'page=retrieve&userid='
+								+'page=main&userid='
 								+this.getAttribute('id');
 						
 					});
@@ -212,12 +212,10 @@ var admin = (()=>{ /* 디폴트생성자부분()) */
 				var form = document.getElementById('seachForm');
 				document.getElementById('searchBtn').addEventListener('click',function(){
 				            location.href=(form.searchOption.value==='userid') ?
-				                x+'/admin.do?action=RETRIEVE&page=memberDetail&userid='+form.searchWord.value
+				                x+'/member.do?action=retrieve&page=search&userid='+form.searchWord.value
 				                :
 				                x+'/admin.do?action=search&page=main&searchOption='+form.searchOption.value+'&searchWord='+form.searchWord.value;        
 				                ;
-				                alert("form.searchOption.value = " + form.searchOption.value);
-				                alert("form.searchWord.value = " + form.searchWord.value);
 				    });
 			
 		}

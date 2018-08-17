@@ -12,8 +12,8 @@ public class ImageServiceImpl implements ImageService{
 	public static ImageService getInstance() {return instance;}
 	private ImageServiceImpl(){}
 	@Override
-	public List<ImageBean> add(Map<String, Object> param) {
-		return null;
+	public void add(ImageBean bean) {
+		ImageDAOImpl.getInstance().insert(bean);
 	}
 	
 }

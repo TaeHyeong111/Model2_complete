@@ -7,7 +7,6 @@
 	<input id="searchBtn" type="button" value="제출"/>
 	<input id="searchWord" name="searchWord" type="text"  placeholder="검색어 입력"/>
 	<select name="searchOption" id="searchOption">
-		  <option value="gender">성별</option>
 		  <option value="userid">아이디</option>
 		  <option value="name">이름</option>
 		  <option value="teamid">팀명</option>
@@ -37,8 +36,8 @@
 		<td colspan="6">
 				전체회원수 : ${count}
 				<ul class="pageBox" >
-					<c:if test="${existPrev}">
-						<li>◀PREV</li>
+					<c:if test="${page.existPrev}">
+						<li id="${page.prevBlock}" class="pageNumber">◀PREV</li>
 					</c:if>
 					<c:forEach begin="${page.beginPage}" 
 						end="${page.endPage}" 

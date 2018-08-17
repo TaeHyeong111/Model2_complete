@@ -26,10 +26,7 @@ public class AdminController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		Receiver.init(request);
 		switch(Action.valueOf(Receiver.cmd.getAction().toUpperCase())) {
-				
-		case RETRIEVE : 
-			Carrier.forward(request, response);
-			break;
+
 		case SEARCH : 
 			System.out.println("서치들어옴");
 			Carrier.forward(request, response);

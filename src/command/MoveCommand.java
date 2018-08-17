@@ -15,5 +15,6 @@ public class MoveCommand extends Command {
 		super.execute();
 		request.setAttribute("pagename",
 				request.getParameter("page"));
+		System.out.println("페이지네임 : "+request.getAttribute("pagename"));
 	}
 }

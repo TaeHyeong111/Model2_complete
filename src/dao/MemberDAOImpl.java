@@ -7,9 +7,12 @@ import java.util.Map;
 
 import domain.MemberBean;
 import template.AddQuery;
+import template.CountQuery;
 import template.LoginQuery;
+import template.ModifyQuery;
 import template.PstmtQuery;
 import template.QueryTemplate;
+import template.RemoveQuery;
 import template.RetrieveQuery;
 import template.SearchQuery;
 
@@ -42,27 +45,30 @@ public class MemberDAOImpl implements MemberDAO {
 		q = new RetrieveQuery();
 		param.put("searchWord", id);
 		q.play(param);
+		System.out.println("dddd : "+q.getMem());
 		return q.getMem();
 	}
 	@Override
 	public int count() {
-		q = new PstmtQuery();
-		HashMap<String,Object> map = new HashMap<>();
-		map.put("flag", "count");
-		q.play(map);
-		int count = 0;
-		for(Object s: q.getList()) {
-			count = (int)s;
-        }
-		return count;
+		q = new CountQuery();
+		q.play();
+		return q.getNumber();
 	}
 	@Override
 	public void update(Map<?, ?> param) {
+		System.out.println("param : "+param);
+		q = new ModifyQuery();
+		Map<String,Object> map = new HashMap<>();
+		map.put("update", param);
+		q.play(param);
 		
 	}
 	@Override
 	public void delete(MemberBean member) {
-		
+		q = new RemoveQuery();
+		Map<String,Object> param = new HashMap<>();
+		param.put("delete", member);
+		q.play(param);
 	}
 	@Override
 	public MemberBean login(MemberBean member) {

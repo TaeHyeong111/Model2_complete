@@ -32,6 +32,7 @@ import domain.MemberBean;
 import enums.Action;
 import enums.Path;
 import service.ImageServiceImpl;
+import service.MemberServiceImpl;
 
 
 @WebServlet("/member.do")
@@ -43,6 +44,7 @@ public class MemberController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("멤버두 들어옴");
 		Receiver.init(request);
+		System.out.println("++++"+Receiver.cmd.getAction().toUpperCase());
 		switch(Action.valueOf(Receiver.cmd.getAction().toUpperCase())) {
 		case MOVE : 
 				Carrier.forward(request, response);
@@ -70,14 +72,11 @@ public class MemberController extends HttpServlet {
 			Carrier.redirect(request, response,"");
 			break;
 		case RETRIEVE : 
+			System.out.println("리트리브");
 			Carrier.forward(request, response);
 			break;
 		case FILEUPLOAD :
 			System.out.println("===[1]===");
-			System.out.println("업파일"+request.getParameter("name"));
-			MemberBean mem = new MemberBean();
-			mem = (MemberBean) request.getSession().getAttribute("user");
-			System.out.println("매미는 맴맴 : "+mem.getUserId());
 			if(!ServletFileUpload.isMultipartContent(request)) {
 				System.out.println("업로드파일이 없습니다.");
 				return;
@@ -90,6 +89,7 @@ public class MemberController extends HttpServlet {
 			List<FileItem> items = null;
 			
 			try {
+				ImageBean bean = new ImageBean();
 				System.out.println("===[3]===try 내부로 진입");
 				File file = null;
 				items = upload.parseRequest(new ServletRequestContext(request));
@@ -102,14 +102,11 @@ public class MemberController extends HttpServlet {
 								System.out.println("===[6]===if 진입");
 								String fileName = item.getName();
 								System.out.println("파일네임 : "+fileName);
-								Map<String,Object>param = new HashMap<>();
-								ImageBean bean = new ImageBean();
+								
 								bean.setImgName(fileName.substring(0,fileName.lastIndexOf(".")));
 								bean.setExtension(fileName.substring(fileName.lastIndexOf(".")+1));
-								bean.setUserid(mem.getUserId());
-								
-								System.out.println("빈빈"+bean);
-								param.put("fileName", fileName);
+								bean.setUserid(((MemberBean) request.getSession().getAttribute("user")).getUserId());
+								ImageServiceImpl.getInstance().add(bean);
 								file = new File(Path.UPLOAD_PATH+fileName);
 								System.out.println("파일"+file);
 								item.write(file);
@@ -130,9 +127,5 @@ public class MemberController extends HttpServlet {
 			break;
 		}
 	}
-
-	private void ImageServiceImpl(Map<String, Object> param) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

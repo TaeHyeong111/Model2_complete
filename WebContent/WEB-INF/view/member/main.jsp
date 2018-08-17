@@ -24,6 +24,9 @@
 	    <c:when test="${pagename eq 'modify'}">
 	       <jsp:include page="modify.jsp"/>
 	    </c:when>
+	    <c:when test="${pagename eq 'remove'}">
+	    	<jsp:include page="remove.jsp"/>
+	    </c:when>
 	    <c:otherwise>
 	         <jsp:include page="retrieve.jsp"/>
 	    </c:otherwise>
@@ -33,8 +36,8 @@
 		 <jsp:include page="../common/footerBox.jsp"/>	
 	</div>
 </div></div>
-<script>
-	member.main('${context}');
-</script>	
+<!-- <script>
+	member.main('${ctx}');
+</script> -->	
 </body>
 </html>

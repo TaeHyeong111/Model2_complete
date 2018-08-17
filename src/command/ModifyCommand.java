@@ -20,15 +20,22 @@ public class ModifyCommand extends Command {
 
 	@Override
 	public void execute() {
-		System.out.println("update 들어옴!!!");
-		Map<String, Object> updateMap = new HashMap<>();
-		System.out.println("유저 : "+request.getSession().getAttribute("user"));
-		updateMap.put("userid", (((MemberBean) request.getSession().getAttribute("user")).getUserId()));
+		Map<String, Object> modifyMap = new HashMap<>();
 		
-		updateMap.put("password", request.getParameter("password"));
-		updateMap.put("teamid", request.getParameter("teamid"));
-		updateMap.put("roll", request.getParameter("roll"));
-		MemberServiceImpl.getInstance().modify(updateMap);
+		
+		MemberBean member = new MemberBean();
+		member = (MemberBean) request.getSession().getAttribute("user");
+		member.setPassword(request.getParameter("password"));
+		request.getSession().setAttribute("user",member);
+		
+		MemberBean mem = new MemberBean();
+		mem.setUserId(((MemberBean) request.getSession().getAttribute("user")).getUserId());
+		mem.setPassword(request.getParameter("password"));
+		mem.setTeamId(request.getParameter("teamid"));
+		mem.setRoll(request.getParameter("roll"));
+		modifyMap.put("modify", mem);
+		System.out.println("모디파이맵 : "+modifyMap.get("modify"));
+		MemberServiceImpl.getInstance().modify(modifyMap);
 		System.out.println("update 성공!!");
 
 	}

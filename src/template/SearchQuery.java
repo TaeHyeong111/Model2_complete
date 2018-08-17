@@ -12,6 +12,7 @@ public class SearchQuery  extends QueryTemplate {
 	@Override
 	void initialize() {
 		if(map.get("searchOption")!=null) {
+			System.out.println("이프이프이프!!");
 			map.put("sql",
 					String.format(MemberQuery.SEARCH.toString(), 
 							map.get("searchOption")));
@@ -26,10 +27,6 @@ public class SearchQuery  extends QueryTemplate {
 	void startPlay() {
 		if(map.get("searchOption")!=null) {
 			try {
-				pstmt = DatabaseFactory
-						.createDatabase2(map)
-						.getConnection()
-						.prepareStatement("sql");
 				pstmt.setString(1, "%"+map.get("searchWord").toString()+"%");
 				pstmt.setString(2, map.get("beginRow").toString());
 				pstmt.setString(3, map.get("rowCount").toString());
@@ -37,16 +34,9 @@ public class SearchQuery  extends QueryTemplate {
 				e.printStackTrace();
 			}
 		}else {
-			System.out.println("서치쿼리 beginRow : "+map.get("beginRow"));
-			System.out.println("서치쿼리 endRow : "+map.get("endRow"));
 			try {
-				pstmt = DatabaseFactory
-						.createDatabase2(map)
-						.getConnection()
-						.prepareStatement((String) map.get("sql"));
 				pstmt.setString(1, (String)map.get("beginRow").toString());
 				pstmt.setString(2, (String)map.get("endRow").toString());
-				System.out.println("pstmt : "+pstmt);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

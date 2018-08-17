@@ -42,7 +42,10 @@ public abstract class QueryTemplate { //abstract 추상
 	   // param 에 담긴 key값을 모두 Iterator<?> keys 에 담음
 	   while(keys.hasNext()) {
 		   String key = (String) keys.next();
+		   System.out.println("키는모임 : "+key);
 		   this.map.put(key, param.get(key));
+		   System.out.println("?? :"+map.get(key));
+		   System.out.println("???? : "+param.get(key));
 	   }
 	   
 	   initialize();
@@ -50,6 +53,22 @@ public abstract class QueryTemplate { //abstract 추상
 	   startPlay();
 	   endPlay();
    }
+    
+    public final void play(){
+ 	   this.number = 0;
+ 	   this.o = null;
+ 	   this.list = new ArrayList<>();
+ 	   this.map = new HashMap<>();
+ 	   this.pstmt = null;
+ 	   this.map.put("vendor", Vendor.ORACLE);
+ 	   this.map.put("username", DBConstant.USERNAME);
+ 	   this.map.put("password", DBConstant.PASSWORD);
+ 	   initialize();
+ 	   pStmtInit();
+ 	   startPlay();
+ 	   endPlay();
+    }
+    
     public void pStmtInit() {
     	try {
 			this.pstmt = DatabaseFactory

@@ -85,7 +85,7 @@
                         form.action = "${ctx}/member.do";
                         form.method = "post"; /* get으로 하면 노출됨 */
                         var node = document.createElement('input');
-                        node.innerHTML = '<input type="hidden" name="action" value="update">'
+                        node.innerHTML = '<input type="hidden" name="action" value="modify">'
                         form.appendChild(node);
                         form.submit();
                     } else {

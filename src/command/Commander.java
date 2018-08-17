@@ -10,6 +10,7 @@ import enums.Action;
 public class Commander {
     public static Command order(HttpServletRequest request){
             Command cmd =null;
+            System.out.println("액션액션 : "+request.getParameter("action").toUpperCase());
             switch(Action.valueOf(request.getParameter("action").toUpperCase())) {
             case MOVE : 
                 cmd = new MoveCommand(request);
@@ -30,13 +31,14 @@ public class Commander {
             	cmd = new ModifyCommand(request);
             	break;
             case REMOVE : 
+            	System.out.println("리무브들어옴");
             	cmd = new RemoveCommand(request);
             	break;
             case COUNT : 
             	cmd = new CountCommand(request);
             	break;
             case FILEUPLOAD : 
-            	cmd = new CountCommand(request);
+            	cmd = new MoveCommand(request);
             	break;
             default:
                 break;

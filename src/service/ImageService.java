@@ -6,5 +6,5 @@ import java.util.Map;
 import domain.ImageBean;
 
 public interface ImageService {
-	public List<ImageBean> add(Map<String,Object>param);
+	public void add(ImageBean bean);
 }

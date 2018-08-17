@@ -18,10 +18,6 @@ public class RetrieveQuery extends QueryTemplate {
 	@Override
 	void startPlay() {
 		try {
-			pstmt = DatabaseFactory
-					.createDatabase2(map)
-					.getConnection()
-					.prepareStatement((String) map.get("sql"));
 			pstmt.setString(1, (String)map.get("searchWord"));
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -43,7 +39,8 @@ public class RetrieveQuery extends QueryTemplate {
 				mem.setPassword(rs.getString("PASSWORD"));
 				mem.setSsn(rs.getString("SSN"));
 				mem.setSubject(rs.getString("SUBJECT"));
-				System.out.println("쿼리 리트리버 입장" + mem.getName());
+				System.out.println("쿼리 리트리버 입장" + mem);
+				
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();

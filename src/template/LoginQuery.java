@@ -35,7 +35,7 @@ public class LoginQuery extends QueryTemplate{
 			rs = pstmt.executeQuery(); //쿼리실행, 반환값이 resultset
 			while(rs.next()) {
 				o = (MemberBean)map.get("mem");
-				((MemberBean)o).setUserId(rs.getString("MEMID"));
+				((MemberBean)o).setUserId(rs.getString("USERID"));
 				((MemberBean)o).setPassword(rs.getString("PASSWORD"));
 			}
 		} catch (SQLException e) {

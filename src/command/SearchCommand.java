@@ -25,6 +25,8 @@ public class SearchCommand extends Command {
 	@Override
 	public void execute() {
 		Map<String,Object> paramMap = new HashMap<>();
+		System.out.println("서치옵션 : "+request.getParameter("searchOption"));
+		System.out.println("서치워드 : "+request.getParameter("searchWord"));
 		String pageNumber = request.getParameter("pageNumber");
 		System.out.println("1.pageNumber : "+pageNumber);
 		PageProxy pxy = new PageProxy();
@@ -38,9 +40,8 @@ public class SearchCommand extends Command {
         paramMap.put("searchWord", request.getParameter("searchWord"));
 		
 		request.setAttribute("page", page);
-		System.out.println("page : "+ request.getAttribute("page"));
 		request.setAttribute("list", MemberServiceImpl.getInstance().search(paramMap));
-		System.out.println("list : " + request.getAttribute("list"));
+		request.setAttribute("count", MemberServiceImpl.getInstance().Count());
 		
 
 		super.execute();
